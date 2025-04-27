@@ -1,0 +1,445 @@
+/* Global Styles */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #f1f5f9;
+    --accent-color: #fbbf24;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e5e7eb;
+    --resume-bg: #fff;
+    --resume-shadow: 0 4px 24px rgba(30,41,59,0.08);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.06);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-link.active,
+.nav-link:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.toggle-input {
+    display: none;
+}
+.toggle-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 3.2rem;
+    height: 1.6rem;
+    background: #e5e7eb;
+    border-radius: 100px;
+    position: relative;
+    padding: 0 0.3rem;
+    transition: background 0.3s;
+}
+.toggle-label i {
+    font-size: 0.95rem;
+    color: #64748b;
+    transition: color 0.3s;
+}
+.toggle-label .fa-sun {
+    margin-left: 0.1rem;
+}
+.toggle-label .fa-moon {
+    margin-right: 0.1rem;
+}
+.toggle-ball {
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: #fff;
+    border-radius: 50%;
+    top: 0.25rem;
+    left: 0.25rem;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.toggle-input:checked + .toggle-label {
+    background: var(--primary-color);
+}
+.toggle-input:checked + .toggle-label .toggle-ball {
+    transform: translateX(1.5rem);
+}
+.toggle-input:checked + .toggle-label i {
+    color: #fff;
+}
+
+/* Dark theme */
+body.dark-mode {
+    background: #181e29;
+    color: #f3f4f6;
+}
+body.dark-mode header {
+    background: #23293a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+body.dark-mode .form-container,
+body.dark-mode .resume-content {
+    background: #23293a;
+    color: #f3f4f6;
+}
+body.dark-mode .resume-content {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+body.dark-mode .main-nav .nav-link {
+    color: #bfc9db;
+}
+body.dark-mode .main-nav .nav-link.active,
+body.dark-mode .main-nav .nav-link:hover {
+    background: #1e293b;
+    color: var(--accent-color);
+}
+body.dark-mode .section-title,
+body.dark-mode .resume-section h3,
+body.dark-mode .resume-header-info h1 {
+    color: var(--accent-color);
+}
+body.dark-mode .skills-list li {
+    background: #1e293b;
+    color: var(--accent-color);
+}
+body.dark-mode .add-btn {
+    background: #23293a;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+body.dark-mode .add-btn:hover {
+    background: var(--accent-color);
+    color: #23293a;
+}
+body.dark-mode .download-btn,
+body.dark-mode .login-btn {
+    background: var(--accent-color);
+    color: #23293a;
+}
+body.dark-mode .download-btn:hover,
+body.dark-mode .login-btn:hover {
+    background: #f59e42;
+    color: #23293a;
+}
+
+.site-name h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.login-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.login-btn:hover {
+    background: #1d4ed8;
+}
+
+.container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.form-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(30,41,59,0.06);
+    padding: 2rem 1.5rem;
+    min-width: 340px;
+    max-width: 370px;
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-size: 0.97rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: border 0.2s;
+    margin-top: 0.2rem;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    background: #fff;
+}
+
+input[type="file"] {
+    margin-top: 0.5rem;
+}
+
+#profilePicPreview {
+    display: block;
+    margin: 0.7rem 0 0.3rem 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.add-btn {
+    background: #f1f5f9;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s;
+}
+.add-btn:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+button[type="button"], .download-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.7rem;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+button[type="button"]:hover, .download-btn:hover {
+    background: #1d4ed8;
+}
+
+.resume-preview {
+    flex: 2 1 600px;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.resume-content {
+    background: var(--resume-bg);
+    border-radius: 18px;
+    box-shadow: var(--resume-shadow);
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    width: 100%;
+    max-width: 700px;
+    min-height: 900px;
+    margin: 0 auto;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.resume-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+.resume-header img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid var(--primary-color);
+}
+.resume-header-info {
+    flex: 1;
+}
+.resume-header-info h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem 0;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+}
+.resume-header-info h2 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0 0 0.7rem 0;
+}
+.resume-header-info .contact-row {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.resume-section {
+    margin-bottom: 2.2rem;
+}
+.resume-section h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.resume-section ul {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+.resume-section li {
+    margin-bottom: 0.4rem;
+}
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.skills-list li {
+    background: #f1f5f9;
+    color: var(--primary-color);
+    border-radius: 6px;
+    padding: 0.3rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.experience-entry, .education-entry {
+    margin-bottom: 1.2rem;
+}
+.experience-entry:last-child, .education-entry:last-child {
+    margin-bottom: 0;
+}
+.exp-title, .edu-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+}
+.exp-company, .edu-school {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+}
+.exp-dates, .edu-dates {
+    color: #94a3b8;
+    font-size: 0.93rem;
+    margin-bottom: 0.3rem;
+}
+.exp-desc, .edu-desc {
+    margin: 0.2rem 0 0 0;
+    color: var(--text-primary);
+    font-size: 0.98rem;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .resume-preview {
+        justify-content: stretch;
+    }
+    .resume-content {
+        padding: 1.2rem 0.7rem;
+        min-height: 700px;
+    }
+    .form-container {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
